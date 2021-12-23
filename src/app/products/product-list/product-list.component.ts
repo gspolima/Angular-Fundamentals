@@ -6,6 +6,8 @@ import { Component } from "@angular/core";
 })
 export class ProductListComponent {
     pageTitle: string = "Product List";
+    imageWidthEm: number = 4;
+    imageMarginEm: number = 0.5;
 
     products: any[] = [
         {
