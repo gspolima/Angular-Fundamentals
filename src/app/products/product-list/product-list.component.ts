@@ -1,17 +1,19 @@
 import { Component } from "@angular/core";
+import { IProduct } from "../product";
 
 @Component({
     selector: 'pm-product-list',
     templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent {
     pageTitle: string = "Product List";
-    imageWidthEm: number = 4;
-    imageMarginEm: number = 0.5;
+    imageWidthInEm: number = 3;
+    imageMarginInEm: number = 0.2;
     showImage: boolean = false;
     listFilter: string = 'cart';
 
-    products: any[] = [
+    products: IProduct[] = [
         {
             "productId": 2,
             "productName": "Garden Cart",
