@@ -7,13 +7,15 @@ import localePt from '@angular/common/locales/pt';
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
+import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 
 registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent
+    ProductListComponent,
+    ConvertToSpacesPipe
   ],
   imports: [
     BrowserModule,

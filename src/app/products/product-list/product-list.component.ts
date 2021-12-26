@@ -1,12 +1,17 @@
 import { Component } from "@angular/core";
 import { IProduct } from "../product";
-
+import { OnInit } from "@angular/core";
 @Component({
     selector: 'pm-product-list',
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
+
+    ngOnInit(): void {
+        console.log("Product list component was created");
+    }
+
     pageTitle: string = "Product List";
     imageWidthInEm: number = 3;
     imageMarginInEm: number = 0.2;
