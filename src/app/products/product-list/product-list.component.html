@@ -16,7 +16,7 @@
                 <h4>Filtered by: {{ listFilter }}</h4>
             </div>
         </div>
-        <div class="table-responsive" *ngIf="products.length > 0">
+        <div class="table-responsive" *ngIf="productList.length > 0">
             <table class="table table-hover table-borderless">
                 <thead>
                     <tr>
@@ -35,7 +35,7 @@
                     </tr>
                 </thead>
                 <tbody class="align-middle">
-                    <tr *ngFor="let product of products">
+                    <tr *ngFor="let product of productList">
                         <td>
                             <img *ngIf="showImage"
                                 [src]="product.imageUrl"
