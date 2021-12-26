@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit {
 
     ngOnInit(): void {
       console.log("Product list component was created");
-      this._listFilter  = 'cart';
+      this.listFilter  = 'rake';
     }
 
     private _listFilter: string = '';
