@@ -16,6 +16,25 @@
                 <h4>Filtered by: {{ listFilter }}</h4>
             </div>
         </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-1">
+                <label for="rangeMin">Min value:</label>
+                <input (change)="onRangeChange()" id="rangeMin" type="number" [(ngModel)]="rangeMin">
+            </div>
+            <div class="col-md-1">
+                <label for="rangeMax">Max value:</label>
+                <input (change)="onRangeChange()" id="rangeMax" type="number" [(ngModel)]="rangeMax">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="customRange" class="form-label">Move the slider back and forth</label>
+                <input id="customRange" [(ngModel)]='rangeValue' type="range" step="1" class="form-range" [min]="rangeMin" [max]="rangeMax" [disabled]="isRangeDisabled">
+                <span>Current slider value: {{ rangeValue }}</span>
+            </div>
+        </div>
+        <hr>
         <div class="table-responsive" *ngIf="productList.length > 0">
             <table class="table table-hover table-borderless">
                 <thead>

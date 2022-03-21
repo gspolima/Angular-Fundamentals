@@ -70,6 +70,21 @@ export class ProductListComponent implements OnInit {
         }
     ];
 
+    onRangeChange() {
+      if (this.areValidValues(this.rangeMin, this.rangeMax)) {
+        this.isRangeDisabled = false;
+        this.rangeValue = this.rangeMin;
+      }
+      else {
+        this.isRangeDisabled = true;
+        this.rangeValue = 0;
+      }
+    }
+
+    areValidValues(min: number, max: number): boolean {
+      return max > min ? true : false;
+    }
+
     onToggleImage(): void {
       this.showImage = !this.showImage;
     }
@@ -87,4 +102,8 @@ export class ProductListComponent implements OnInit {
     imageWidthInEm: number = 3;
     imageMarginInEm: number = 0.2;
     showImage: boolean = false;
+    rangeValue: number = 0;
+    rangeMin: number = 0;
+    rangeMax: number = 100;
+    isRangeDisabled: boolean = false;
 }
