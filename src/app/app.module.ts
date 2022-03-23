@@ -8,6 +8,7 @@ import localePt from '@angular/common/locales/pt';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
+import { SpongeBobCasePipe } from './shared/spongebob-case.pipe';
 
 registerLocaleData(localePt);
 
@@ -15,7 +16,8 @@ registerLocaleData(localePt);
   declarations: [
     AppComponent,
     ProductListComponent,
-    ConvertToSpacesPipe
+    ConvertToSpacesPipe,
+    SpongeBobCasePipe
   ],
   imports: [
     BrowserModule,
