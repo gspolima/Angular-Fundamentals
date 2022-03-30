@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { SpongeBobCasePipe } from './shared/spongebob-case.pipe';
+import { StarComponent } from './shared/star.component';
 
 registerLocaleData(localePt);
 
@@ -17,7 +18,8 @@ registerLocaleData(localePt);
     AppComponent,
     ProductListComponent,
     ConvertToSpacesPipe,
-    SpongeBobCasePipe
+    SpongeBobCasePipe,
+    StarComponent
   ],
   imports: [
     BrowserModule,

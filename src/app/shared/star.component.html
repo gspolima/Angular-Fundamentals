@@ -1,11 +1,14 @@
-<div class="crop"
-     [style.width.px]="cropWidth"
-     [title]="rating">
-  <div style="width: 75px">
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
+<div
+    (click)="onClick()"
+    class="crop"
+    [style.width.px]="cropWidth"
+    [title]="rating">
+  <div [style.width.px]="starsContainerWidth">
+    <span *ngFor="let id of [1,2,3,4,5]">
+      <span
+        id="{{ id }}"
+        class="fa fa-star">
+      </span>
+    </span>
   </div>
 </div>

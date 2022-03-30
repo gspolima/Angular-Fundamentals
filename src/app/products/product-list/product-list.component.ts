@@ -67,8 +67,42 @@ export class ProductListComponent implements OnInit {
           "price": 8.9,
           "starRating": 4.8,
           "imageUrl": "assets/images/hammer.png"
+        },
+        {
+          "productId": 6,
+          "productName": "LED Light Bulb",
+          "productCode": "APL-0024",
+          "releaseDate": "2021-12-01",
+          "description": "Powerful 12W Neutral Color Light",
+          "price": 5.1,
+          "starRating": 3.9,
+          "imageUrl": "assets/images/lightbulb.png"
+        },
+        {
+          "productId": 7,
+          "productName": "Saw",
+          "productCode": "SNL-0078",
+          "releaseDate": "2021-06-30",
+          "description": "Rock solid saw",
+          "price": 12,
+          "starRating": 4.4,
+          "imageUrl": "assets/images/saw.png"
+        },
+        {
+          "productId": 10,
+          "productName": "XBox Controller",
+          "productCode": "XMS-0001",
+          "releaseDate": "2021-11-15",
+          "description": "Comfortable with long-lasting batteries",
+          "price": 25.9,
+          "starRating": 4.9,
+          "imageUrl": "assets/images/xbox-controller.png"
         }
     ];
+
+    onRatingClicked(message: string): void {
+      this.pageTitle = `Product List: ${message}`;
+    }
 
     onRangeChange() {
       if (this.areValidValues(this.rangeMin, this.rangeMax)) {
