@@ -15,9 +15,9 @@ export class StarComponent implements OnChanges {
         this.cropWidth = this.rating * 75/5;
     }
 
-    @Output() ratingClickNotifier: EventEmitter<string> = new EventEmitter<string>();
+    @Output() ratingClickNotifier: EventEmitter<number> = new EventEmitter<number>();
 
-    onClick(): void {
-        this.ratingClickNotifier.emit(`Rating ${this.rating} clicked`);
+    onClick(starValue: number): void {
+        this.ratingClickNotifier.emit(starValue);
     }
 }

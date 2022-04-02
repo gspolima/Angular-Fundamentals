@@ -100,8 +100,11 @@ export class ProductListComponent implements OnInit {
         }
     ];
 
-    onRatingClicked(message: string): void {
-      this.pageTitle = `Product List: ${message}`;
+    onRatingClicked(starValue: number, productId: number): void {
+      let productIndex = 
+        this._products.findIndex((p) => p.productId === productId);
+      this._products[productIndex].starRating = starValue;
+      this.pageTitle = `Product List: product ${productId} rated as ${starValue}`;
     }
 
     onRangeChange() {

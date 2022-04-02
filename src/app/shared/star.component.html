@@ -1,12 +1,12 @@
 <div
-    (click)="onClick()"
     class="crop"
     [style.width.px]="cropWidth"
     [title]="rating">
   <div [style.width.px]="starsContainerWidth">
-    <span *ngFor="let id of [1,2,3,4,5]">
+    <span *ngFor="let number of [1,2,3,4,5]">
       <span
-        id="{{ id }}"
+        (click)="onClick(this.number)"
+        id="{{ number }}"
         class="fa fa-star">
       </span>
     </span>
