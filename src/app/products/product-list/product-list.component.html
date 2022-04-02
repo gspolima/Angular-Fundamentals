@@ -62,8 +62,8 @@
                                 [style.width.em]="imageWidthInEm"
                                 [style.margin.em]="imageMarginInEm" />
                         </td>
-                        <td>{{ product.productName | spongebobCase }}</td>
-                        <td>{{ product.productCode | lowercase | convertToSpaces:'-' }}</td>
+                        <td>{{ product.productName }}</td>
+                        <td>{{ product.productCode | uppercase | convertToSpaces:'-' }}</td>
                         <td>{{ product.releaseDate | date:'d MMMM y':'pt' }}</td>
                         <td>{{ product.price | currency:'BRL':'symbol-narrow':'1.2-2':'pt' }}</td>
                         <td>
