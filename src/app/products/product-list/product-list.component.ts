@@ -1,25 +1,23 @@
 import { Component,OnInit } from "@angular/core";
 import { IProduct } from "../product";
+import { ProductService } from "../product.service.";
 
 @Component({
     selector: 'pm-product-list',
     templateUrl: './product-list.component.html',
-    styleUrls: ['./product-list.component.css']
+    styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-    /*
-    **
-    */
-    constructor() {
-      this._productList = this._products;
+    // neat shorthand for private property + constructor parameter
+    constructor(private productService: ProductService) {
     }
 
     ngOnInit(): void {
       console.log("Product list component was created");
-      this.listFilter  = 'rake';
+      this._productList = this.productService.getProducts()
+      this.listFilter  = 'Le';
     }
 
-    private _listFilter: string = '';
     get listFilter(): string {
       return this._listFilter;
     }
@@ -29,81 +27,18 @@ export class ProductListComponent implements OnInit {
       this.productList = this.filterProductsByName(this._listFilter);
     }
 
-    private _productList: IProduct[];
     get productList() {
       return this._productList;
     }
     set productList(items: IProduct[]) {
-      this._productList = items;
+      if (items.length > 0)
+        this._productList = items;
     }
-
-    private _products: IProduct[] = [
-        {
-          "productId": 1,
-          "productName": "Leaf Rake",
-          "productCode": "GDN-0011",
-          "releaseDate": "March 19, 2021",
-          "description": "Leaf rake with 48-inch wooden handle.",
-          "price": 19.95,
-          "starRating": 3.2,
-          "imageUrl": "assets/images/leaf_rake.png"
-        },
-        {
-          "productId": 2,
-          "productName": "Garden Cart",
-          "productCode": "GDN-0023",
-          "releaseDate": "2021-03-18",
-          "description": "15 gallon capacity rolling garden cart",
-          "price": 32.99,
-          "starRating": 4.2,
-          "imageUrl": "assets/images/garden_cart.png"
-        },
-        {
-          "productId": 5,
-          "productName": "Hammer",
-          "productCode": "TBX-0048",
-          "releaseDate": "2021-05-21",
-          "description": "Curved claw steel hammer",
-          "price": 8.9,
-          "starRating": 4.8,
-          "imageUrl": "assets/images/hammer.png"
-        },
-        {
-          "productId": 6,
-          "productName": "LED Light Bulb",
-          "productCode": "APL-0024",
-          "releaseDate": "2021-12-01",
-          "description": "Powerful 12W Neutral Color Light",
-          "price": 5.1,
-          "starRating": 3.9,
-          "imageUrl": "assets/images/lightbulb.png"
-        },
-        {
-          "productId": 7,
-          "productName": "Saw",
-          "productCode": "SNL-0078",
-          "releaseDate": "2021-06-30",
-          "description": "Rock solid saw",
-          "price": 12,
-          "starRating": 4.4,
-          "imageUrl": "assets/images/saw.png"
-        },
-        {
-          "productId": 10,
-          "productName": "XBox Controller",
-          "productCode": "XMS-0001",
-          "releaseDate": "2021-11-15",
-          "description": "Comfortable with long-lasting batteries",
-          "price": 25.9,
-          "starRating": 4.9,
-          "imageUrl": "assets/images/xbox-controller.png"
-        }
-    ];
 
     onRatingClicked(starValue: number, productId: number): void {
       let productIndex = 
-        this._products.findIndex((p) => p.productId === productId);
-      this._products[productIndex].starRating = starValue;
+        this.productService.getProducts().findIndex((p) => p.productId === productId);
+        this.productService.getProducts()[productIndex].starRating = starValue;
       this.pageTitle = `Product List: product ${productId} rated as ${starValue}`;
     }
 
@@ -132,9 +67,13 @@ export class ProductListComponent implements OnInit {
 
     filterProductsByName(value: string): IProduct[] {
       value = value.toLowerCase();
-      return this._products.filter((p) => p.productName.toLowerCase().includes(value));
+      return this.productService.getProducts()
+        .filter(
+          (p) => p.productName.toLowerCase().includes(value));
     }
 
+    private _listFilter: string = '';
+    private _productList: IProduct[] = [];
     pageTitle: string = "Product List";
     imageWidthInEm: number = 3;
     imageMarginInEm: number = 0.2;
