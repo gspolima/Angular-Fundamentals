@@ -14,7 +14,7 @@ export class ProductListComponent implements OnInit {
 
     ngOnInit(): void {
       console.log("Product list component was created");
-      this._productList = this.productService.getProducts()
+      this.__products = this.productService.getProducts();
       this.listFilter  = 'Le';
     }
 
@@ -28,11 +28,11 @@ export class ProductListComponent implements OnInit {
     }
 
     get productList() {
-      return this._productList;
+      return this.__productList;
     }
     set productList(items: IProduct[]) {
       if (items.length > 0)
-        this._productList = items;
+        this.__productList = items;
     }
 
     onRatingClicked(starValue: number, productId: number): void {
@@ -40,21 +40,6 @@ export class ProductListComponent implements OnInit {
         this.productService.getProducts().findIndex((p) => p.productId === productId);
         this.productService.getProducts()[productIndex].starRating = starValue;
       this.pageTitle = `Product List: product ${productId} rated as ${starValue}`;
-    }
-
-    onRangeChange() {
-      if (this.areValidValues(this.rangeMin, this.rangeMax)) {
-        this.isRangeDisabled = false;
-        this.rangeValue = this.rangeMin;
-      }
-      else {
-        this.isRangeDisabled = true;
-        this.rangeValue = 0;
-      }
-    }
-
-    areValidValues(min: number, max: number): boolean {
-      return max > min ? true : false;
     }
 
     onToggleImage(): void {
@@ -67,19 +52,16 @@ export class ProductListComponent implements OnInit {
 
     filterProductsByName(value: string): IProduct[] {
       value = value.toLowerCase();
-      return this.productService.getProducts()
+      return this.__products
         .filter(
           (p) => p.productName.toLowerCase().includes(value));
     }
 
     private _listFilter: string = '';
-    private _productList: IProduct[] = [];
+    private __products: IProduct[] = [];
+    __productList: IProduct[] = [];
     pageTitle: string = "Product List";
     imageWidthInEm: number = 3;
     imageMarginInEm: number = 0.2;
     showImage: boolean = false;
-    rangeValue: number = 0;
-    rangeMin: number = 0;
-    rangeMax: number = 100;
-    isRangeDisabled: boolean = false;
 }

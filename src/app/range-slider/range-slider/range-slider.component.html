@@ -1,0 +1,19 @@
+<h4><em>Range slider</em></h4>
+
+<div class="row">
+    <div class="col-md-1">
+        <label for="rangeMin">Min value:</label>
+        <input (change)="onRangeChange()" id="rangeMin" type="number" [(ngModel)]="rangeMin">
+    </div>
+    <div class="col-md-1">
+        <label for="rangeMax">Max value:</label>
+        <input (change)="onRangeChange()" id="rangeMax" type="number" [(ngModel)]="rangeMax">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <label for="customRange" class="form-label">Move the slider back and forth</label>
+        <input id="customRange" [(ngModel)]='rangeValue' type="range" step="1" class="form-range" [min]="rangeMin" [max]="rangeMax" [disabled]="isRangeDisabled">
+        <span>Slider value: {{ isRangeDisabled ? 'Disabled 😕' : rangeValue }}</span>
+    </div>
+</div>

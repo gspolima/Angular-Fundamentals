@@ -10,6 +10,7 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { SpongeBobCasePipe } from './shared/spongebob-case.pipe';
 import { StarComponent } from './shared/star.component';
+import { RangeSliderComponent } from './range-slider/range-slider/range-slider.component';
 
 registerLocaleData(localePt);
 
@@ -19,7 +20,8 @@ registerLocaleData(localePt);
     ProductListComponent,
     ConvertToSpacesPipe,
     SpongeBobCasePipe,
-    StarComponent
+    StarComponent,
+    RangeSliderComponent
   ],
   imports: [
     BrowserModule,
