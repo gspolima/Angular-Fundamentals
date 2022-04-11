@@ -38,7 +38,8 @@ export class ProductListComponent implements OnInit {
     onRatingClicked(starValue: number, productId: number): void {
       let productIndex = 
         this.productService.getProducts().findIndex((p) => p.productId === productId);
-        this.productService.getProducts()[productIndex].starRating = starValue;
+      console.log(productIndex);
+      this.__productList[productIndex].starRating = starValue;
       this.pageTitle = `Product List: product ${productId} rated as ${starValue}`;
     }
 
