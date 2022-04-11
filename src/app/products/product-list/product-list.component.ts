@@ -1,4 +1,6 @@
 import { Component,OnInit } from "@angular/core";
+import { Observable, range } from "rxjs";
+import { filter, map } from "rxjs/operators";
 import { IProduct } from "../product";
 import { ProductService } from "../product.service.";
 
@@ -16,6 +18,7 @@ export class ProductListComponent implements OnInit {
       console.log("Product list component was created");
       this.__products = this.productService.getProducts();
       this.listFilter  = 'Le';
+      console.log(this.productService.getProducts2().subscribe());
     }
 
     get listFilter(): string {

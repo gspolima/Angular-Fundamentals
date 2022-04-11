@@ -1,10 +1,17 @@
 import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable, range } from "rxjs";
+import { filter, map } from "rxjs/operators";
 import { IProduct } from "./product";
 
 @Injectable({
     providedIn: 'root'
 })
 export class ProductService {
+    constructor(private http: HttpClient) {}
+
+    private baseURL = '../../api/products/products.json';
+
     getProducts(): IProduct[] {
         return [
             {
@@ -68,5 +75,9 @@ export class ProductService {
                 "imageUrl": "assets/images/xbox-controller.png"
             }
         ]
+    }
+
+    getProducts2(): Observable<IProduct[]> {
+        return this.http.get<IProduct[]>(this.baseURL);
     }
 }

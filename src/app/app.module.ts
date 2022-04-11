@@ -11,6 +11,7 @@ import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { SpongeBobCasePipe } from './shared/spongebob-case.pipe';
 import { StarComponent } from './shared/star.component';
 import { RangeSliderComponent } from './range-slider/range-slider/range-slider.component';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localePt);
 
@@ -25,7 +26,8 @@ registerLocaleData(localePt);
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent],
   providers: [
